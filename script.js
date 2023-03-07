@@ -1,14 +1,25 @@
+const mainUrl = 'http://localhost:8080/http://localhost:3000/'
+
 document.querySelector('#first').onclick = function(){
-  document.querySelector('#text').classList.remove('secondOption', 'thirdOption');
-  document.querySelector('#text').classList.add('firstOption');
-}
+  const value = document.querySelector('#searchInput').value
 
-document.querySelector('#second').onclick = function(){
-  document.querySelector('#text').classList.remove('firstOption', 'thirdOption');
-  document.querySelector('#text').classList.add('secondOption');
-}
+  fetch(`${mainUrl}filtered_items?text=${value}`)
+  .then(function (response) {
+    response.json().then(function (data) {
+      console.log('data.filteredItems',data.filteredItems);
+      const filteredItems = data.filteredItems;
+      const itemsWrapper = document.querySelector('.itemsWrapper')
 
-document.querySelector('#third').onclick = function(){
-  document.querySelector('#text').classList.remove('firstOption', 'secondOption');
-  document.querySelector('#text').classList.add('thirdOption');
-}
+      while (itemsWrapper.firstChild) {
+        itemsWrapper.removeChild(itemsWrapper.firstChild);
+      }
+
+      filteredItems.forEach(item => {
+        let div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `<h1>${item.name}</h1>`;  
+        itemsWrapper.append(div);
+      })
+    })
+  })
+};

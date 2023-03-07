@@ -17,14 +17,6 @@ main {
   justify-content: center;
 }
 
-#text {
-  width: 300px;
-  text-align: center;
-  padding: 10px;
-  border: 3px solid rgb(147, 47, 0);
-  border-radius: 10px;
-}
-
 .btnWrapper {
   margin-top: 50px;
 }
@@ -51,16 +43,26 @@ main {
  text-align: left;
 }
 
-.secondOption {
-  font-size: 16px;
-  color:chartreuse;
-  background-color:darkblue;
-  text-align: center;
+.itemsWrapper {
+  margin-top: 50px;
+  display: flex;
+  max-width: 730px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.thirdOption {
-  font-size: 20px;
-  color:crimson;
-  background-color: black;
-  text-align: right;
+.item {
+  width: 170px;
+  height: 60px;
+  background-color: antiquewhite;
+  color: black;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
 }
