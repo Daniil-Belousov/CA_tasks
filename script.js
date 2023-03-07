@@ -8,8 +8,11 @@ form.addEventListener('submit', function(e) {
     const name = document.querySelector('#name').value;
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
+    const confirm_password = document.querySelector('#confirm_password').value;
 
-    if (validation(EMAIL_REGEXP, email) && password.length >= 8 && name.trim().length) {
+    const condition = validation(EMAIL_REGEXP, email) && password.length >= 8 && confirm_password === password && password !== password.toLowerCase() && name.trim().length
+
+    if (condition) {
         const user = { name, email, password };
         localStorage.setItem('user', JSON.stringify(user));
 
