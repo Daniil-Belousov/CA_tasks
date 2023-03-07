@@ -1,22 +1,22 @@
-let currentElement = null;
+const img = document.querySelector('img');
 
-document.addEventListener("mousedown", function(event) {
-  if (event.target.classList.contains("draggable")) {
-    currentElement = event.target;
-    currentElement.startX = event.clientX - currentElement.offsetLeft;
-    currentElement.startY = event.clientY - currentElement.offsetTop;
-  }
-});
+function toggleFullscreen() {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else {
+        img.requestFullscreen();
+    }
+}
 
-document.addEventListener("mousemove", function(event) {
-  if (currentElement) { 
-    let newX = event.clientX - currentElement.startX;
-    let newY = event.clientY - currentElement.startY;
-    currentElement.style.left = newX + "px";
-    currentElement.style.top = newY + "px";
-  }
-});
+img.addEventListener('click', toggleFullscreen);
 
-document.addEventListener("mouseup", function(event) {
-  currentElement = null;
-});
+function enlargeOnHover() {
+    img.style.transform = 'scale(1.1)';
+}
+
+function reduceOnLeave() {
+    img.style.transform = '';
+}
+
+img.addEventListener('mouseenter', enlargeOnHover);
+img.addEventListener('mouseleave', reduceOnLeave);
