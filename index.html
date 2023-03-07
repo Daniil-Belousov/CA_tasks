@@ -9,13 +9,30 @@
 </head>
 <body>
   <main>
-    <input type="text" id="searchInput"/>
-    <div class="btnWrapper">
-      <button id="first" class="btn">Найти</button>
-    </div>
-    <div class="itemsWrapper">
-      <p>Введите что-то из: бытовая техника, электроника, мебель, кофеварка, шкаф, микроволновка, диван, стиральная машина, телевизор, ноутбук, холодильник</p>
-    </div>
+    <div id="messageBlock"></div>
+    <form  id="form">
+      <div class="inputsWrapper">
+        <label>
+          Имя:
+        <input placeholder="Введите ваше имя" type="name" name="name" id="nameInput" class="input" required/>
+      </label>
+      <label>
+        Email:
+        <input placeholder="Введите ваш email" type="email" name="email" id="emailInput" class="input" required/>
+      </label>
+      <label>
+        Номер телефона:
+        <input placeholder="Введите ваш номер телефона" type="tel" name="tel" id="telInput" class="input" required/>
+      </label>
+      <label>
+        Адрес доставки:
+        <input placeholder="Введите адрес доставки" type="text" name="address" id="textInput" class="input" required/>
+      </label>
+      </div>
+      <div class="btnWrapper">
+        <input type="submit" id="btn" class="btn" value="Отправить"/>
+      </div>
+    </form>
   </main>
   <script src="./script.js"></script>
 </body>
