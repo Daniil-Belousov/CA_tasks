@@ -9,14 +9,20 @@
 </head>
 <body>
   <main>
-    <p id="text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi nobis aperiam numquam quibusdam architecto iste reprehenderit atque quis expedita, libero consequuntur enim! Reiciendis architecto beatae dolorum adipisci earum, deleniti aut?
-    </p>
-    <div class="btnWrapper">
-      <button id="first" class="btn">Первый вариант</button>
-      <button id="second" class="btn">Второй вариант</button>
-      <button id="third" class="btn">Третий вариант</button>
-    </div>
+    <form>
+      <label for="name">Имя:</label>
+      <input type="text" id="name" class="input" required>
+      
+      <label for="email">Электронная почта:</label>
+      <input type="email" id="email" class="input" required>
+      
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" class="input" required>
+      
+      <button type="submit" class="btn">Зарегистрироваться</button>
+  </form>
+  
+  <div id="message"></div>
   </main>
   <script src="./script.js"></script>
 </body>
