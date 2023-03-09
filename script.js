@@ -1,11 +1,14 @@
-function getFirstResolved(p1, p2) {
-    return Promise.race([p1, p2]);
+async function checkUrls(urls) {
+    const results = [];
+  
+    for (const url of urls) {
+      try {
+        const response = await fetch(url);
+        results.push({ url, status: response.status });
+      } catch (error) {
+        results.push({ url, error: true });
+      }
+    }
+  
+    return results;
   }
-
-const resolvePromise = Promise.resolve("Success 1 promise");
-
-const promise = new Promise(function(resolve) {
-    setTimeout(() => resolve("Success 2 promise"), 1000);
-  });
-
-console.log(getFirstResolved(resolvePromise, promise));
