@@ -1,4 +1,5 @@
-const mainUrl = 'http://localhost:8080/http://localhost:3000/'
+import { sendData } from "./module.js";
+
 const Form = document.getElementById('form');
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 const TEL_REGEXP = /\+7\(\d{3}\)\d{3}-\d{2}-\d{2}/;
@@ -26,18 +27,17 @@ async function handleFormSubmit(event) {
 
     if(!value || !value.trim().length) {
       createMessage('Заполните все поля');
-      condition = true;
+      breakCondition = true;
     }
 
     if(name === 'email' && !validation(EMAIL_REGEXP, value)) {
       createMessage('Введите валидный email, пример: example@gmail.com')
-      condition = true;
+      breakCondition = true;
     }
     if(name === 'tel' && !validation(TEL_REGEXP, value)) {
       createMessage('Введите валидный номер телефона, пример: +7-999-999-99-99')
-      condition = true;
+      breakCondition = true;
     }
-
 
   });
   if(breakCondition) {
@@ -50,14 +50,6 @@ async function handleFormSubmit(event) {
   } else {
       createMessage('Что-то пошло не так')
   }
-}
-
-async function sendData(data) {
-  return await fetch(mainUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
-    body: data,
-  })
 }
 
 function validation(regexp, value) {
